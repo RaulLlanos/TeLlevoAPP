@@ -1,3 +1,38 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="nav.toggle()"><mat-icon>menu</mat-icon></button>
+  <div class="logo">Logo</div>
+  <div class="extra"></div>
+  <mat-icon>share</mat-icon>
+
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-wrapper">
+  <mat-sidenav #nav>
+    <a [routerLink]="['home']" color="primary">
+      <button mat-button>
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+    </a>
+    <a [routerLink]="['profile']" color="primary">
+      <button mat-button>
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+    </a>
+    <a [routerLink]="['about']" color="primary">
+      <button mat-button>
+        <mat-icon>info</mat-icon>
+        <span>About Us</span>
+      </button>
+    </a>
+    <a [routerLink]="['contact-us']" color="primary">
+      <button mat-button>
+        <mat-icon>call</mat-icon>
+        <span>Contact Us</span>
+      </button>
+    </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
