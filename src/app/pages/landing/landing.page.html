@@ -1,7 +1,29 @@
 <ion-content>
-  <swiper-container>
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
+  <swiper-container effect="flip" pager="true" #swiper
+  (afterinit)="swiperReady()"
+  (slidechange)="swiperSlideChanged($event)"
+  [loop]="true"
+  [pagination]="true"
+  >
+    <swiper-slide class="topRight">
+      <div class="imagen-container">
+        <img src="assets/img/light-blue-bg.jpg" alt="Imangen fondo azul">
+      </div>
+      <div class="swiper-button-next ion-text-right custom-next-button"  fill="clear" (click)="goToLogin()">SKIP</div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="imagen-container">
+        <img src="assets/img/blue-bg.jpg" alt="Imagen de fondo celeste">
+    </div>
+      <div class="swiper-button-next ion-text-right custom-next-button"  fill="clear" (click)="goToLogin()">SKIP</div>
+    </swiper-slide>
+    <swiper-slide>
+      <div class="imagen-container">
+        <img src="assets/img/pink-bg.jpg" alt="imagen de fondo rosa">
+        <ion-button class="custom-start" fill="outline" shape="round" color="danger" (click)="goToLogin()">
+          <ion-text color="dark">Let's Start</ion-text>
+        </ion-button>
+      </div>
+    </swiper-slide>
   </swiper-container>
 </ion-content>
