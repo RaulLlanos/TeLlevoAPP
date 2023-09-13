@@ -1,5 +1,52 @@
 <ion-content>
-  <div id="mapa-box">
-    <div class="mapa" id="mapa-box"></div>
+  
+  <div class="wrapper">
+    <div class="box-inputs">
+      <div>
+        <div id="geocoder" #asGeoCoder class="geocoder"></div>
+      </div>
+    </div>
   </div>
+  
+  <div class="wrapper">
+    <div class="map-container" id="mapa" #asMap></div>
+  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Viajar</ion-card-title>
+      <ion-card-subtitle>Busca tu ruta</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-card-subtitle>Punto de Inicio</ion-card-subtitle>
+      <ion-searchbar animated="true" placeholder="Punto Partida"></ion-searchbar>
+      <ion-card-subtitle>Punto de Llegada</ion-card-subtitle>
+      <ion-searchbar animated="true" placeholder="Punto Llegada"></ion-searchbar>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home">
+            <ion-icon name="home-outline"></ion-icon>
+            Home
+          </ion-tab-button>
+          <ion-tab-button tab="radio">
+            <ion-icon name="card-outline"></ion-icon>
+            Metodo de Pago
+          </ion-tab-button>
+          <ion-tab-button tab="library">
+            <ion-icon name="settings-outline"></ion-icon>
+            Configuracion
+          </ion-tab-button>
+          <ion-tab-button tab="search">
+            <ion-icon name="person-outline"></ion-icon>
+            Cuenta
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
