@@ -6,7 +6,7 @@
   <ion-list class="ion-margin">
 
     <div class="ion-margin">
-      <ion-segment mode="ios" value="1">
+      <ion-segment mode="ios" (ionChange)="segmentChanged($event)">
         <ion-segment-button value="1">
           <ion-label>Log-in</ion-label>
         </ion-segment-button>
@@ -15,6 +15,9 @@
         </ion-segment-button>
       </ion-segment>
     </div>
+
+    <app-sign-in *ngIf="segmentValue === '1'"></app-sign-in>
+    <app-sign-up *ngIf="segmentValue === '2'"></app-sign-up>
 
   </ion-list>
 </ion-content>

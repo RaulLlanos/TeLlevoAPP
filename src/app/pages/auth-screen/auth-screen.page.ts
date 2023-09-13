@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthScreenPage implements OnInit {
 
+
+  segmentValue = '1';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  segmentChanged(event : any){
+    console.log(event);
+    this.segmentValue = event.detail.value;
+
   }
 
 }

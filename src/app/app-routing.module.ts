@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SignInComponent } from './pages/auth-screen/sign-in/sign-in.component';
 
 const routes: Routes = [
   {
@@ -8,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'auth-screen',
     pathMatch: 'full'
   },
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
-  },  {
+  },
+  {
     path: 'auth-screen',
     loadChildren: () => import('./pages/auth-screen/auth-screen.module').then( m => m.AuthScreenPageModule)
   },

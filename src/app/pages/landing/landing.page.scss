@@ -42,12 +42,12 @@ swiper-slide img {
   align-items: initial;
   justify-content: flex-end;
 }
-.custom-next-button {
-  position: absolute;
-  top: 20px; /* Ajusta la distancia desde la parte superior según tus necesidades */
-  right: 20px; /* Ajusta la distancia desde la derecha según tus necesidades */
-  z-index: 10; /* Ajusta la posición en la capa para que esté por encima del contenido */
-}
+// .custom-next-button {
+//   position: absolute;
+//   top: 20px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+//   right: 20px; /* Ajusta la distancia desde la derecha según tus necesidades */
+//   z-index: 1; /* Ajusta la posición en la capa para que esté por encima del contenido */
+// }
 
 .imagen-container {
   width: 100%;
@@ -66,8 +66,9 @@ swiper-slide img {
   object-fit: cover;
 }
 
-.custom-start {
+.custom-start-button {
   position: absolute;
-  z-index: 1; /* Ajusta la posición en la capa para que esté por encima del contenido */
-  transform: translateY(30vh);
+  top: 20px;
+  right: 20px;
+  z-index: 10;
 }

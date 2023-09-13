@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Swiper  from 'swiper';
 import { Router } from '@angular/router';
+import { Preferences } from '@capacitor/preferences';
+
+export const INTRO_KEY = 'intro-slides';
 
 @Component({
   selector: 'app-landing',
@@ -15,6 +18,7 @@ export class LandingPage implements OnInit {
 
   constructor(private router: Router) { }
 
+
   ngOnInit() {
   }
 
@@ -23,7 +27,7 @@ export class LandingPage implements OnInit {
   }
 
   goToLogin(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/auth-screen']);
   }
 
   goPrev(){
