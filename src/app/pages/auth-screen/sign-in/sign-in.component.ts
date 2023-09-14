@@ -8,6 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent  implements OnInit {
 
+  email: string = '';
+  password: string = '';
+
+  onSubmit() {
+    // Aquí puedes agregar la lógica para autenticar al usuario
+    console.log('Correo electrónico:', this.email);
+    console.log('Contraseña:', this.password);
+    // Puedes usar un servicio de autenticación para verificar las credenciales del usuario
+  }
 
   constructor() {}
 

@@ -9,14 +9,19 @@ import { AuthScreenPageRoutingModule } from './auth-screen-routing.module';
 import { AuthScreenPage } from './auth-screen.page';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
-    AuthScreenPageRoutingModule
+    AuthScreenPageRoutingModule,
+    FormsModule
   ],
-  declarations: [AuthScreenPage, SignInComponent, SignUpComponent]
+  declarations: [AuthScreenPage, SignInComponent, SignUpComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthScreenPageModule {}
