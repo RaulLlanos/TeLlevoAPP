@@ -3,6 +3,14 @@
   <div class="ion-margin-vertical">
     <ion-item lines="full">
       <ion-input [formControl]="email" type="text" placeholder="Enter email"></ion-input>
+      <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
+        <span *ngIf="email.errors?.['required']">
+          El email es obligatorio
+        </span>
+        <span *ngIf="email.errors?.['email']">
+          El email debe ser valido
+        </span>
+      </div>
     </ion-item>
   </div>
   <div class="ion-margin-vertical">

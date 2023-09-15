@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class ResetPasswordComponent  implements OnInit {
 
