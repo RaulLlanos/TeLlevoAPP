@@ -31,6 +31,15 @@
     (click)="onSubmit()">
     <ion-text>Log In</ion-text>
   </ion-button>
+  <ion-button
+    *ngIf=""
+    class="ion-margin-horizontal"
+    size="large"
+    expand="block"
+    shape="round"
+    color="primary">
+    <ion-spinner></ion-spinner>
+  </ion-button>
 </div>
 
 <p class="ion-text-center">
