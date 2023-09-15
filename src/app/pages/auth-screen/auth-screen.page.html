@@ -1,17 +1,17 @@
 <ion-content [fullscreen]="true">
   <div align="center" class="logo-container">
-    <img class="img-logo" src="assets/img/logo.png" alt="Logo Colegio">
+    <img class="img-logo" src="assets/img/logo.png" alt="Logo del Colegio">
   </div>
 
   <ion-list class="ion-margin">
 
-    <div class="ion-margin marginBottom">
-      <ion-segment mode="ios" (ionChange)="segmentChanged($event)">
+    <div class="ion-margin marginBottom" (ionChange)="segmentChanged($event)">
+      <ion-segment mode="ios" [value]="segmentValue">
         <ion-segment-button value="1">
-          <ion-label>Log-in</ion-label>
+          <ion-label>Log In</ion-label>
         </ion-segment-button>
         <ion-segment-button value="2">
-          <ion-label>Sign-up</ion-label>
+          <ion-label>Sign Up</ion-label>
         </ion-segment-button>
       </ion-segment>
     </div>
