@@ -1,2 +1,44 @@
-<p>Hello
+<form [formGroup]="form" class="ion-margin">
+  <div class="ion-margin-vertical">
+    <ion-item lines="full">
+      <ion-input [formControl]="email" type="text" placeholder="Enter email or username"></ion-input>
+    </ion-item>
+  </div>
+  <div class="ion-margin-vertical">
+    <ion-item lines="full">
+      <ion-icon
+        slot="end"
+        color="dark"
+        (click)="changeType()">
+      </ion-icon>
+      <ion-input [formControl]="password" placeholder="Enter password" type="password"></ion-input>
+    </ion-item>
+  </div>
+</form>
+
+<!-- Forgot Password -->
+<p class="ion-text-right ion-margin-horizontal">
+  <ion-text color="medium">Forgot password?</ion-text>
+</p>
+
+<div class="ion-margin-horizontal">
+  <ion-button
+   class="ion-margin-horizontal"
+    size="large"
+    expand="block"
+    shape="round"
+    color="primary"
+    (click)="onSubmit()">
+    <ion-text>Log In</ion-text>
+  </ion-button>
+</div>
+
+<p class="ion-text-center">
+  <ion-text color="medium">OR</ion-text>
+</p>
+
+<p class="ion-text-center">
+  <ion-icon name="logo-facebook" color="tertiary"></ion-icon>
+  <ion-icon name="logo-twitter" color="secondary"></ion-icon>
+  <ion-icon name="logo-google" color="danger"></ion-icon>
 </p>

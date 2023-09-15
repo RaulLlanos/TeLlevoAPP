@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -8,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent  implements OnInit {
 
+  form = new FormGroup ('');
+  email = new FormControl('');
+  password = new FormControl('');
+  type = true;
 
-  constructor() {}
 
   ngOnInit() {}
+
+  changeType() {
+  }
+
+  onSubmit() {
+
+  }
 
 }

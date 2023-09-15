@@ -1,3 +1,42 @@
-<p>
-  sign-up works!
+<form [formGroup]="form" class="ion-margin">
+  <div class="ion-margin-vertical">
+    <ion-item lines="full">
+      <ion-input formControlName="username" type="text" placeholder="Enter username"></ion-input>
+    </ion-item>
+  </div>
+  <div class="ion-margin-vertical">
+    <ion-item lines="full">
+      <ion-input formControlName="email" type="text" placeholder="Enter email"></ion-input>
+    </ion-item>
+  </div>
+  <div class="ion-margin-vertical">
+    <ion-item lines="full">
+      <ion-icon
+        slot="end"
+        color="dark" >
+      </ion-icon>
+      <ion-input formControlName="password" [type]="type ? 'password' : 'text'"
+        placeholder="Enter password"></ion-input>
+    </ion-item>
+  </div>
+</form>
+
+<div class="ion-margin-horizontal">
+  <ion-button
+    size="large"
+    expand="block"
+    shape="round"
+    color="primary">
+    <ion-text>Sign Up</ion-text>
+  </ion-button>
+</div>
+
+<p class="ion-text-center">
+  <ion-text color="medium">OR</ion-text>
+</p>
+
+<p class="ion-text-center">
+  <ion-icon name="logo-facebook" color="tertiary"></ion-icon>
+  <ion-icon name="logo-twitter" color="secondary"></ion-icon>
+  <ion-icon name="logo-google" color="danger"></ion-icon>
 </p>

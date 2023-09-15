@@ -1,7 +1,9 @@
 ion-content {
-    --background: url('../../../assets/img/main.jpg') no-repeat center center/cover;
+    --background: url('../../../assets/img/blue-degrade.jpg') no-repeat center center/cover;
     ion-list{
-      border-radius: 5px;
+      margin-top: 8vh;
+      border-radius: 20px;
+      box-shadow: 0 0 3px 0 var(--ion-color-medium);;
       ion-segment{
         --background: var(--ion-color-primary-contrast);
         border-radius: 20px;
@@ -19,3 +21,19 @@ ion-content {
       }
     }
 }
+.img-logo{
+  max-width: 100%;
+  width: 50px; /* Tamaño deseado */
+  height: auto; /* Mantiene la proporción original */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.logo-container {
+  position: relative;
+  text-align: right;
+}
+.marginBottom {
+  margin-bottom: 5vh;
+}
+
