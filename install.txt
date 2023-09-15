@@ -3,3 +3,6 @@ npm i -D @capacitor/cli
 
 npm install @capacitor/preferences
 npx cap sync
+
+npm install mapbox-gl --save
+npm install --save @mapbox/mapbox-	
