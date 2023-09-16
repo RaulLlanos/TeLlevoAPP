@@ -6,11 +6,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-}) 
+})
 export class HomePage {
   public map: mapboxgl.Map;
   public style = 'mapbox://styles/mapbox/light-v11';
   @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
+
   constructor(private renderer2: Renderer2) {
     this.asGeoCoder = null!;
     this.map = null!;
@@ -59,5 +60,9 @@ export class HomePage {
       })
     });
   }
+
+  state:any;
+
+  email: any;
 
 }

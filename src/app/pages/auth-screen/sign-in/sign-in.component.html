@@ -1,7 +1,7 @@
 <form [formGroup]="form" class="ion-margin">
   <div id="sign-in-button"></div>
   <div class="ion-margin-vertical">
-    <ion-item lines="full">
+    <ion-item lines="none">
       <ion-input [formControl]="email" type="text" placeholder="Enter email"></ion-input>
       <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
         <span *ngIf="email.errors?.['required']">
@@ -28,12 +28,12 @@
 <!-- Forgot Password -->
 
 <p class="ion-text-right ion-margin-horizontal">
-  <ion-text color="medium">Forgot password?</ion-text>
+  <ion-text id="forgot-password" color="medium">Forgot password?</ion-text>
 </p>
 
 <div class="ion-margin-horizontal">
   <ion-button
-   class="ion-margin-horizontal"
+    class="ion-margin-horizontal"
     size="large"
     expand="block"
     shape="round"
@@ -61,3 +61,15 @@
   <ion-icon name="logo-twitter" color="secondary"></ion-icon>
   <ion-icon name="logo-google" color="danger"></ion-icon>
 </p>
+
+<ion-modal
+  #forgot_pwd_modal
+  trigger="forgot-password"
+  cssClass="inline_modal"
+  (ionModalDidDismiss)="reset($event)"
+  [breakpoints]="[0.1, 0.5, 0.9]"
+  [initialBreakpoint]="0.5">
+  <ng-template>
+    <app-reset-password></app-reset-password>
+  </ng-template>
+</ion-modal>

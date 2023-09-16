@@ -13,10 +13,45 @@ import { IonicModule } from '@ionic/angular';
 export class ResetPasswordComponent  implements OnInit {
 
 
+  model: any = {
+    email: '',
+    new_password: ''
+  };
+  flag: number | undefined;
+  // Nose aun que flag usar ...
+  // flag!: number;
+
   constructor() { }
 
   ngOnInit() {}
 
+  getData() {
+    let data: any = {};
+    if(this.model?.email == '' && this.model?.new_password == '') {
+      data = {
+        title: 'Forgot password',
+        subTitle: 'Enter your email for the verification process.',
+        button: 'VERIFY'
+      };
+      this.flag = 1;
+    } else {
+      data = {
+        title: 'Reset password',
+        subTitle: 'Enter your new password, must be atleast 8 characters long.',
+        button: 'SAVE'
+      };
+      this.flag = 2;
+    }
+    console.log(data);
+    return data;
+  }
 
+  onSubmit(form: NgForm) {
+    console.log(form.value);
+    this.model = {
+      email: form.value.email || '',
+      new_password: form.value.new_password || ''
+    };
+  }
 
 }

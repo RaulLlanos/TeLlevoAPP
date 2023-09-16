@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertController, IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule} from '@ionic/angular';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
@@ -20,12 +21,25 @@ export class SignInComponent  implements OnInit {
   password = new FormControl('');
   type = true;
 
-  constructor() { }
+
+  constructor(private router: Router) { }
+
+  changeType() {}
+
+  onSubmit() {
+    if(!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    console.log(this.form.value);
+    this.router.navigateByUrl('/home', {replaceUrl: true});
+}
+
 
   ngOnInit() {}
 
-  changeType() { }
 
-  onSubmit() { }
+  reset(event: any) {
 
+  }
 }
