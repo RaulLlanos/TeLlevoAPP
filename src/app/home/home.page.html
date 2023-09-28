@@ -8,6 +8,16 @@
       <div>
         <div id="geocoder" #asGeoCoder class="geocoder"></div>
       </div>
+
+      <div (click)="changeMode('start')" [ngClass]="{'active-way':modeInput === 'start'}">
+        <div class="mock-label">Inicio</div>
+        <div class="mock-input">RUTA</div>
+      </div>
+
+      <div (click)="changeMode('end')" [ngClass]="{'active-way':modeInput === 'end'}">
+        <div class="mock-label">Final</div>
+        <div class="mock-input">RUTA</div>
+      </div>
     </div>
   </div>
 
@@ -21,10 +31,9 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-card-subtitle>Punto de Inicio</ion-card-subtitle>
-      <ion-searchbar animated="true" placeholder="Punto Partida"></ion-searchbar>
-      <ion-card-subtitle>Punto de Llegada</ion-card-subtitle>
-      <ion-searchbar animated="true" placeholder="Punto Llegada"></ion-searchbar>
+      <div class="wrapper">
+        <button (click)="drawRoute()" class="btn-route">Buscar Ruta</button>
+      </div>
     </ion-card-content>
   </ion-card>
   <br>

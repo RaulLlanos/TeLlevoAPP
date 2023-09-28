@@ -1,6 +1,7 @@
-import { Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, EventEmitter} from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,12 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  cbAddress:EventEmitter<any> = new EventEmitter<any>();
   public map: mapboxgl.Map;
   public style = 'mapbox://styles/mapbox/light-v11';
   @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
+  modeInput = 'start';
+  wayPoints: WayPoints = {start:null, end:null};
 
   constructor(private renderer2: Renderer2) {
     this.asGeoCoder = null!;
@@ -29,6 +33,15 @@ export class HomePage {
     })
     .catch((err) => {
       console.log('******* ERROR ******', err);
+    });
+
+    this.cbAddress.subscribe((getPoint) => {
+      if(this.modeInput === 'start'){
+        this.wayPoints.start = getPoint;
+      }
+      if(this.modeInput === 'end'){
+        this.wayPoints.end = getPoint;
+      }
     });
   }
 
@@ -51,7 +64,10 @@ export class HomePage {
       });
 
       geocoder.on('result', ($event) => {
-        console.log('*********', $event)
+        const {result} = $event;
+        geocoder.clear();
+        console.log('*********', result)
+        this.cbAddress.emit(result);
       })
 
       resolve({
@@ -60,9 +76,36 @@ export class HomePage {
       })
     });
   }
-
   state:any;
-
   email: any;
 
+  loadCoords(coords: number[][]): void{
+    console.log('--------------->', coords)
+    const url = [
+      `https://api.mapbox.com/directions/v5/mapbox/driving/`,
+      `${coords[0][0]},${coords[0][1]};${coords[1][0]},${coords[1][1]}`,
+      `?steps=true&geometries=geojson&acces_token=${environment.mapPk}`,
+    ].join('');
+
+    console.log('**********', url)
+  }
+
+  drawRoute(): void{
+    console.log('Puntos de origen y destino', this.wayPoints)
+    const coords = [
+      this.wayPoints.start.center,
+      this.wayPoints.end.center
+    ];
+
+    this.loadCoords(coords);
+  }
+
+  changeMode(mode:string):void{
+    this.modeInput = mode;
+  }
+}
+
+export class WayPoints{
+  start:any;
+  end:any;
 }
