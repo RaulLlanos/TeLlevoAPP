@@ -2,32 +2,28 @@
   <h1>Bienvenido: {{email}}</h1>
 </ion-header>
 <ion-content>
-
-  <div class="wrapper">
-    <div class="box-inputs">
-      <div>
-        <div id="geocoder" #asGeoCoder class="geocoder"></div>
-      </div>
-
-      <div (click)="changeMode('start')" [ngClass]="{'active-way':modeInput === 'start'}">
-        <div class="mock-label">Inicio</div>
-        <div class="mock-input">RUTA</div>
-      </div>
-
-      <div (click)="changeMode('end')" [ngClass]="{'active-way':modeInput === 'end'}">
-        <div class="mock-label">Final</div>
-        <div class="mock-input">RUTA</div>
-      </div>
-    </div>
-  </div>
-
   <div class="wrapper">
     <div class="map-container" id="mapa" #asMap></div>
   </div>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Viajar</ion-card-title>
-      <ion-card-subtitle>Busca tu ruta</ion-card-subtitle>
+      <div class="wrapper">
+        <div class="box-inputs">
+          <div>
+            <div id="geocoder" #asGeoCoder class="geocoder"></div>
+          </div>
+    
+          <div (click)="changeMode('start')" [ngClass]="{'active-way':modeInput === 'start'}">
+            <ion-card-title><div class="mock-label">Inicio</div></ion-card-title>
+            <ion-card-subtitle><div class="mock-input">RUTA</div></ion-card-subtitle>
+          </div>
+    
+          <div (click)="changeMode('end')" [ngClass]="{'active-way':modeInput === 'end'}">
+            <ion-card-title><div class="mock-label">Final</div></ion-card-title>
+            <ion-card-subtitle><div class="mock-input">RUTA</div></ion-card-subtitle>
+          </div>
+        </div>
+      </div>
     </ion-card-header>
 
     <ion-card-content>
