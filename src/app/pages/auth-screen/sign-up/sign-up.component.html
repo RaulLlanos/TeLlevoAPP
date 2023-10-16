@@ -1,21 +1,23 @@
 <form [formGroup]="form" class="ion-margin">
   <div class="ion-margin-vertical">
     <ion-item lines="full">
-      <ion-input formControlName="username" type="text" placeholder="Enter username"></ion-input>
+      <ion-input formControlName="username" type="text" placeholder="Enter username" errorText="* Please enter the username"></ion-input>
     </ion-item>
   </div>
   <div class="ion-margin-vertical">
     <ion-item lines="full">
-      <ion-input formControlName="email" type="text" placeholder="Enter email"></ion-input>
+      <ion-input formControlName="email" type="text" placeholder="Enter email" errorText="* Please enter email"></ion-input>
     </ion-item>
   </div>
   <div class="ion-margin-vertical">
     <ion-item lines="full">
       <ion-icon
+        [name]="type ? 'eye' : 'eye-off'"
         slot="end"
-        color="dark" >
+        color="dark"
+        (click)="changeType()" >
       </ion-icon>
-      <ion-input formControlName="password" type="password"
+      <ion-input errorText="* Please enter the password" minlength="8" formControlName="password" [type]="type ? 'password' : 'text'"
         placeholder="Enter password"></ion-input>
     </ion-item>
   </div>

@@ -23,4 +23,8 @@ export class SignUpComponent  implements OnInit {
 
   ngOnInit() {}
 
+  changeType() {
+    this.type = !this.type;
+  }
+
 }
