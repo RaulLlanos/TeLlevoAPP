@@ -26,8 +26,12 @@ export class LandingPage implements OnInit {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
-  goToLogin(){
-    this.router.navigate(['/auth-screen']);
+  async goToLogin(){
+    await Preferences.set({
+      key: INTRO_KEY,
+      value: 'true'
+    });
+    this.router.navigateByUrl('/auth-screen', { replaceUrl: true });
   }
 
   goPrev(){
