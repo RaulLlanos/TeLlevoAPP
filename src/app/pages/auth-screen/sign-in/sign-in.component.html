@@ -2,15 +2,15 @@
   <div id="sign-in-button"></div>
   <div class="ion-margin-vertical">
     <ion-item lines="none">
-      <ion-input [formControl]="email" type="text" placeholder="Enter email"></ion-input>
-      <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
+      <ion-input formControlName="email" type="text" placeholder="Enter email"></ion-input>
+      <!-- <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
         <span *ngIf="email.errors?.['required']">
           El email es obligatorio
         </span>
         <span *ngIf="email.errors?.['email']">
           El email debe ser valido
         </span>
-      </div>
+      </div> -->
     </ion-item>
   </div>
   <div class="ion-margin-vertical">
@@ -20,7 +20,7 @@
         color="dark"
         (click)="changeType()">
       </ion-icon>
-      <ion-input [formControl]="password" placeholder="Enter password" type="password"></ion-input>
+      <ion-input formControlName="password" placeholder="Enter password" type="password"></ion-input>
     </ion-item>
   </div>
 </form>
@@ -33,6 +33,7 @@
 
 <div class="ion-margin-horizontal">
   <ion-button
+    [disabled]="form.invalid"
     class="ion-margin-horizontal"
     size="large"
     expand="block"
