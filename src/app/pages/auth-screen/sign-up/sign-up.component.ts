@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, IonicModule } from '@ionic/angular';
 
@@ -13,18 +13,47 @@ import { AlertController, IonicModule } from '@ionic/angular';
 })
 export class SignUpComponent  implements OnInit {
 
-  form = new FormGroup ('');
-  username = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
+  // form = new FormGroup ('');
+  // username = new FormControl('');
+  // email = new FormControl('');
+  // password = new FormControl('');
   type = false;
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+    private router: Router
+    ) { }
+
+
+  form = this.fb.group({
+    'username': [null, [Validators.required, Validators.minLength(4)]],
+    'email': [null, [Validators.required, Validators.email]],
+    'password': [null, [Validators.required, Validators.minLength(8)]]
+  })
+
+  // constructor() {
+  //   this.initForm();
+  // }
 
   ngOnInit() {}
 
+  // initForm(){
+  //   this.form = new FormGroup({
+  //     username: new FormControl('',[Validators.required, Validators.minLength(2)])
+  //   });
+  // }
+
   changeType() {
     this.type = !this.type;
+  }
+
+  onSubmit() {
+    if(!this.form.valid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    console.log(this.form.value);
+    this.router.navigateByUrl('/home', {replaceUrl: true});
+    this.form.reset();
   }
 
 }

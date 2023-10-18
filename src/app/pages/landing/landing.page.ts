@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Swiper  from 'swiper';
 import { Router } from '@angular/router';
-import { Preferences } from '@capacitor/preferences';
+import { INTRO_KEY, StorageService } from 'src/app/services/storage.service';
 
-export const INTRO_KEY = 'intro-slides';
 
 @Component({
   selector: 'app-landing',
@@ -16,7 +15,9 @@ export class LandingPage implements OnInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private storage: StorageService) { }
 
 
   ngOnInit() {
@@ -27,10 +28,7 @@ export class LandingPage implements OnInit {
   }
 
   async goToLogin(){
-    await Preferences.set({
-      key: INTRO_KEY,
-      value: 'true'
-    });
+    await this.storage.setStorage(INTRO_KEY, 'true');
     this.router.navigateByUrl('/auth-screen', { replaceUrl: true });
   }
 

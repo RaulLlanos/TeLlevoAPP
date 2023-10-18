@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LandingGuard } from './guards/landing.guard';
 
 const routes: Routes = [
   {
@@ -8,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'auth-screen',
     pathMatch: 'full'
   },
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path: 'auth-screen',
-    loadChildren: () => import('./pages/auth-screen/auth-screen.module').then( m => m.AuthScreenPageModule)
+    loadChildren: () => import('./pages/auth-screen/auth-screen.module').then( m => m.AuthScreenPageModule),
+    canLoad: [LandingGuard]
   },
 
 ];
