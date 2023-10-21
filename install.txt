@@ -11,3 +11,7 @@ npx cap sync
 
 npm install mapbox-gl --save
 npm install --save @mapbox/mapbox-
+
+npm install firebase
+ng add @angular/fire
+npm install @ionic-native/core --legacy-peer-deps

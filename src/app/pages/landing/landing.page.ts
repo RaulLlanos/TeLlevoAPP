@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import Swiper  from 'swiper';
 import { Router } from '@angular/router';
-import { INTRO_KEY, StorageService } from 'src/app/services/storage.service';
+import { INTRO_KEY, StorageService } from 'src/app/services/storage/storage.service';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class LandingPage implements OnInit {
 
   constructor(
     private router: Router,
-    private storage: StorageService) { }
+    private storage: StorageService
+    ) { }
 
 
   ngOnInit() {

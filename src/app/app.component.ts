@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+// import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+// import { Observable } from 'rxjs';
 
 register();
 
@@ -9,5 +11,11 @@ register();
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  // firestore: Firestore = inject(Firestore);
+  // items$: Observable<any[]>;
+
+  constructor() {
+    // const aCollection = collection(this.firestore, 'items')
+    // this.items$ = collectionData(aCollection);
+  }
 }
