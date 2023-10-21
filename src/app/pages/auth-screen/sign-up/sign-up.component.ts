@@ -25,7 +25,8 @@ export class SignUpComponent  implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     public loadingCtrl: LoadingController,
-    public authService: AuthService
+    public authService: AuthService,
+
     ) { }
 
 
@@ -65,7 +66,17 @@ export class SignUpComponent  implements OnInit {
     const loading = await this.loadingCtrl.create();
     await loading.present();
     if(this.form?.valid){
-      // const user = await this.authService.registerUser(email, password)
+      const user = await this.authService.registerUser(this.form.value.email, this.form.value.password).catch((error)=>{
+        console.log(error);
+        loading.dismiss()
+      })
+
+      if(user){
+        loading.dismiss()
+        this.router.navigate(['/home'])
+      }else{
+        console.log('provide correct value')
+      }
     }
   }
 
