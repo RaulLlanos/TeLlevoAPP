@@ -4,7 +4,16 @@
 
 export const environment = {
   mapPk: 'pk.eyJ1Ijoib3MyNnJvbWV1IiwiYSI6ImNsbWZ0ZTduMDA4Y3gzc2xsd2xlaDV0bGoifQ.DgpMlL9vhYiUj9BrUjgYOg',
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyCWRjsek6OTHTEDXVS6rQu6uV2vdkEdQ2c",
+    authDomain: "tellevoapp-c09f3.firebaseapp.com",
+    projectId: "tellevoapp-c09f3",
+    storageBucket: "tellevoapp-c09f3.appspot.com",
+    messagingSenderId: "497921326777",
+    appId: "1:497921326777:web:07152f930218dbf63b6568",
+    measurementId: "G-ES3XDG7NM4"
+  }
 };
 
 /*

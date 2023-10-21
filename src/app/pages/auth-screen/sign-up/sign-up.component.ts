@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule, LoadingController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { PassThrough } from 'stream';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,15 +21,18 @@ export class SignUpComponent  implements OnInit {
   // password = new FormControl('');
   type = false;
 
-  constructor(private fb: FormBuilder,
-    private router: Router
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    public loadingCtrl: LoadingController,
+    public authService: AuthService
     ) { }
 
 
   form = this.fb.group({
-    'username': [null, [Validators.required, Validators.minLength(4)]],
-    'email': [null, [Validators.required, Validators.email]],
-    'password': [null, [Validators.required, Validators.minLength(8)]]
+    username: [null, [Validators.required, Validators.minLength(4)]],
+    email: [null, [Validators.required, Validators.email]],
+    password: [null, [Validators.required, Validators.minLength(8)]]
   })
 
   // constructor() {
@@ -54,6 +59,14 @@ export class SignUpComponent  implements OnInit {
     console.log(this.form.value);
     this.router.navigateByUrl('/home', {replaceUrl: true});
     this.form.reset();
+  }
+
+  async signUp(){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    if(this.form?.valid){
+      // const user = await this.authService.registerUser(email, password)
+    }
   }
 
 }

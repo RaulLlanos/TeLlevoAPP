@@ -17,11 +17,21 @@ import {MatIconModule} from '@angular/material/icon';
 // API reference for Angular Material button
 import {MatButtonModule} from '@angular/material/button';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule, BrowserAnimationsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatSidenavModule, MatToolbarModule,
+  MatIconModule, MatButtonModule, BrowserAnimationsModule,
+  AngularFireModule, AngularFireAuthModule, AngularFireModule.initializeApp(environment.firebaseConfig),
+  AngularFirestoreModule, AngularFireStorageModule, AngularFireDatabaseModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
