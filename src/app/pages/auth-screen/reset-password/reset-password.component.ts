@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,7 +14,7 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ResetPasswordComponent  implements OnInit {
 
-
+  email: any
   model: any = {
     email: '',
     new_password: ''
@@ -21,7 +23,10 @@ export class ResetPasswordComponent  implements OnInit {
   // Nose aun que flag usar ...
   // flag!: number;
 
-  constructor() { }
+  constructor(
+    public authService: AuthService,
+    public route: Router
+    ) { }
 
   ngOnInit() {}
 
@@ -52,6 +57,17 @@ export class ResetPasswordComponent  implements OnInit {
       email: form.value.email || '',
       new_password: form.value.new_password || ''
     };
+  }
+
+  async resetPassword(){
+    this.authService.resetPassword(this.email).then(()=>{
+      console.log('reset link sent')
+      this.route.navigate(['/landing'])
+    }
+
+    ).catch((error)=>{
+      console.log(error);
+    })
   }
 
 }

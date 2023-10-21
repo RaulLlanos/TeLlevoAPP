@@ -1,5 +1,6 @@
 <ion-header>
-  <h1>Bienvenido: {{email}}</h1>
+  <h1>Bienvenido: {{user.email}}</h1>
+  <ion-button (click)="logout()">Sign-Out</ion-button>
 </ion-header>
 <ion-content>
   <div class="wrapper">
@@ -12,12 +13,12 @@
           <div>
             <div id="geocoder" #asGeoCoder class="geocoder"></div>
           </div>
-    
+
           <div (click)="changeMode('start')" [ngClass]="{'active-way':modeInput === 'start'}">
             <ion-card-title><div class="mock-label">Inicio</div></ion-card-title>
             <ion-card-subtitle><div class="mock-input">RUTA</div></ion-card-subtitle>
           </div>
-    
+
           <div (click)="changeMode('end')" [ngClass]="{'active-way':modeInput === 'end'}">
             <ion-card-title><div class="mock-label">Final</div></ion-card-title>
             <ion-card-subtitle><div class="mock-input">RUTA</div></ion-card-subtitle>

@@ -2,6 +2,8 @@ import { Component, ElementRef, Renderer2, ViewChild, EventEmitter} from '@angul
 import * as mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +17,18 @@ export class HomePage {
   @ViewChild('asGeoCoder') asGeoCoder: ElementRef;
   modeInput = 'start';
   wayPoints: WayPoints = {start:null, end:null};
+  user:any
 
-  constructor(private renderer2: Renderer2) {
+  constructor(
+    private renderer2: Renderer2,
+    public authService: AuthService,
+    public route: Router,
+    ) {
     this.asGeoCoder = null!;
     this.map = null!;
     var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     mapboxgl.accessToken = 'pk.eyJ1Ijoib3MyNnJvbWV1IiwiYSI6ImNsbWZ0ZTduMDA4Y3gzc2xsd2xlaDV0bGoifQ.DgpMlL9vhYiUj9BrUjgYOg';
+    this.user = authService.getProfile()
   }
 
   ngOnInit(): void {
@@ -103,6 +111,14 @@ export class HomePage {
   changeMode(mode:string):void{
     this.modeInput = mode;
   }
+  async logout(){
+    this.authService.signOut().then(()=>{
+      this.route.navigate(['/landing'])
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
+
 }
 
 export class WayPoints{

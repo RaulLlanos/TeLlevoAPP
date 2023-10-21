@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlertController, IonicModule} from '@ionic/angular';
+import { AlertController, IonicModule, LoadingController} from '@ionic/angular';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -28,22 +28,23 @@ export class SignInComponent  implements OnInit {
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-    private router: Router,
-    private alertController: AlertController
+    private route: Router,
+    private alertController: AlertController,
+    public loadingCtrl: LoadingController
     ) { }
 
-  form = this.fb.group({
-    'email': [null, [Validators.required, Validators.email]],
-    'password': [null, [Validators.required, Validators.minLength(8)]]
+  loginForm = this.fb.group({
+    email: [null, [Validators.required, Validators.email]],
+    password: [null, [Validators.required, Validators.minLength(8)]]
   })
 
   changeType() {}
 
-  onSubmit() {
-    if(!this.form.valid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+  // onSubmit() {
+  //   if(!this.loginForm.valid) {
+  //     this.loginForm.markAllAsTouched();
+  //     return;
+  //   }
     // console.log(this.form.value);
     // this.authService.login(this.form.value).then((data) => {
     //   console.log(data);
@@ -62,7 +63,7 @@ export class SignInComponent  implements OnInit {
     //   }
     //   this.showAlert(msg);
     // });
-  }
+  // }
 //     if(!this.form.valid) {
 //       this.form.markAllAsTouched();
 //       return;
@@ -75,6 +76,23 @@ export class SignInComponent  implements OnInit {
 
 
   reset(event: any) {
+  }
 
+  async login(){
+    const loading = await this.loadingCtrl.create()
+    await loading.present();
+    if(this.loginForm?.valid){
+      const user = await this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).catch((error)=>{
+        console.log(error);
+        loading.dismiss()
+      })
+
+      if(user){
+        loading.dismiss()
+        this.route.navigate(['/home'])
+      }else{
+        console.log('provide correct value')
+      }
+    }
   }
 }
